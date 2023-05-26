@@ -173,7 +173,7 @@ with gr.Blocks(
 ) as demo:
     conversation_id = gr.State(get_uuid)
     gr.Markdown(
-        """<h1><center>Guanaco Demo</center></h1>
+        """<h1><center>Guanaco 33b Demo</center></h1>
 """
     )
     chatbot = gr.Chatbot().style(height=500)
