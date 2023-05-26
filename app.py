@@ -2,23 +2,30 @@ import os
 os.system(f"git lfs install")
 os.system(f"cp /home/demo/venv/lib/python3.8/site-packages/bitsandbytes/libbitsandbytes_cuda118.so /home/demo/venv/lib/python3.8/site-packages/bitsandbytes/libbitsandbytes_cpu.so")
 
+os.chdir(f"/home/demo/source")
+os.system(f"pip install -r requirements.txt")
+
 # Load the model.
 # Note: It can take a while to download LLaMA and add the adapter modules.
 # You can also use the 13B model by loading in 4bits.
 
 import torch
+# from peft import PeftModel 
 from transformers import AutoModelForCausalLM, AutoTokenizer, LlamaTokenizer, StoppingCriteria, StoppingCriteriaList, TextIteratorStreamer
 
-model_name = "timdettmers/guanaco-33b-merged"
+model_name = "decapoda-research/llama-30b-hf"
+adapters_name = 'timdettmers/guanaco-33b'
 
 print(f"Starting to load the model {model_name} into memory")
 
 m = AutoModelForCausalLM.from_pretrained(
     model_name,
-    load_in_4bit=True,
+    #load_in_4bit=True,
     torch_dtype=torch.bfloat16,
     device_map={"": 0}
 )
+m = PeftModel.from_pretrained(m, adapters_name)
+m = m.merge_and_unload()
 tok = LlamaTokenizer.from_pretrained(model_name)
 tok.bos_token_id = 1
 
