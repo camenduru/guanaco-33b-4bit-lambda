@@ -16,6 +16,5 @@ https://www.youtube.com/watch?v=SyuQKRt5310
 https://github.com/artidoro/qlora
 
 ### Models
-H100  <br />
-https://huggingface.co/timdettmers/guanaco-33b  (Thanks to timdettmers ❤) <br />
-https://huggingface.co/decapoda-research/llama-30b-hf  (Thanks to decapoda-research ❤) <br />
+<!-- 1x A6000 (48GB) <br /> -->
+https://huggingface.co/timdettmers/guanaco-33b-merged  (Thanks to timdettmers ❤) <br />
