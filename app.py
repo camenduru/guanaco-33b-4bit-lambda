@@ -1,9 +1,15 @@
 import os
 os.system(f"git lfs install")
-os.system(f"cp /home/demo/venv/lib/python3.8/site-packages/bitsandbytes/libbitsandbytes_cuda118.so /home/demo/venv/lib/python3.8/site-packages/bitsandbytes/libbitsandbytes_cpu.so")
+os.system(f"pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu117 -U")
+os.system(f"pip install bitsandbytes -U")
+os.system(f"pip install sentencepiece fsspec -U")
+os.system(f"pip install git+https://github.com/huggingface/transformers.git -U")
+os.system(f"pip install git+https://github.com/huggingface/peft.git -U")
+os.system(f"pip install git+https://github.com/huggingface/accelerate.git -U")
+os.system(f"cp /home/demo/venv/lib/python3.8/site-packages/bitsandbytes/libbitsandbytes_cuda117.so /home/demo/venv/lib/python3.8/site-packages/bitsandbytes/libbitsandbytes_cpu.so")
 
-os.chdir(f"/home/demo/source")
-os.system(f"pip install -r requirements.txt")
+# os.chdir(f"/home/demo/source")
+# os.system(f"pip install -r requirements.txt")
 
 # Load the model.
 # Note: It can take a while to download LLaMA and add the adapter modules.
