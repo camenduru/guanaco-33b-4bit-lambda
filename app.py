@@ -10,7 +10,7 @@ os.system(f"pip install -r requirements.txt")
 # You can also use the 13B model by loading in 4bits.
 
 import torch
-# from peft import PeftModel 
+from peft import PeftModel 
 from transformers import AutoModelForCausalLM, AutoTokenizer, LlamaTokenizer, StoppingCriteria, StoppingCriteriaList, TextIteratorStreamer
 
 model_name = "decapoda-research/llama-30b-hf"
